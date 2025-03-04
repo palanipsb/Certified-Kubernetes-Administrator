@@ -10,7 +10,9 @@ spec:
     resources:
       requests:
         memory: "100Mi"
+        cpu: "500Mi"
       limits:
         memory: "200Mi"
+        cpu: "500Mi"
     command: ["stress"]
     args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
