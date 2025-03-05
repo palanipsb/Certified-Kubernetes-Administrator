@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp-pod
+spec:
+  containers:
+  - name: myapp-container
+    image: nginx  
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+    env:
+    - name: USERNAME
+      valueFrom:
+        configMapKeyRef:
+          name: myappconfig
+          key: USERNAME
+    - name: PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: myappsecret
+          key: PASSWORD
